@@ -31,21 +31,21 @@
     captured, what you expected, and what you got instead.
   </p>
 
-  <!-- Posts straight to FormSubmit, which emails it on. GitHub Pages serves
+  <!-- Posts straight to Web3Forms, which emails it on. GitHub Pages serves
        static files and nothing else, so the form needs somewhere off-site to
-       post to; this is the same relay the app used to post to itself. -->
-  <form action="https://formsubmit.co/c88b0d2e939dea0d679c8138d7a2c7b9"
-        method="POST"
-        enctype="multipart/form-data">
+       post to. Plain POST, no JavaScript in the path. -->
+  <form action="https://api.web3forms.com/submit" method="POST">
 
-    <input type="hidden" name="_subject" value="LangBuddy report">
-    <input type="hidden" name="_next"
+    <input type="hidden" name="access_key"
+           value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
+    <input type="hidden" name="subject" value="LangBuddy report">
+    <input type="hidden" name="from_name" value="LangBuddy report form">
+    <input type="hidden" name="redirect"
            value="https://langbuddy.zhware.org/report/thanks/">
-    <input type="hidden" name="_template" value="table">
-    <!-- FormSubmit's own honeypot: a bot fills it in, a person never sees
-         it, and the message is dropped without a CAPTCHA in the way. -->
-    <input type="text" name="_honey" style="display:none">
-    <input type="hidden" name="_captcha" value="false">
+    <!-- Web3Forms' Honeypot Trick: a bot ticks it, a person never sees it,
+         and the message is dropped without a CAPTCHA in the way. -->
+    <input type="checkbox" name="botcheck" style="display:none"
+           tabindex="-1" autocomplete="off">
 
     <p>
       <label for="kind"><strong>What is this?</strong></label><br>
@@ -64,14 +64,8 @@
 
     <p>
       <label for="email"><strong>Your email</strong> (optional)</label><br>
-      <input id="email" type="email" name="_replyto"
+      <input id="email" type="email" name="email"
              placeholder="so we can reply">
-    </p>
-
-    <p>
-      <label for="attachment"><strong>Screenshot</strong> (optional)</label><br>
-      <input id="attachment" type="file" name="attachment"
-             accept="image/*,.pdf">
     </p>
 
     <div class="panel" id="diagnostics-panel" hidden>
@@ -90,9 +84,10 @@
   </form>
 
   <p>
-    Would rather write an email? <a href="mailto:langbuddy.support@zhware.org">langbuddy.support@zhware.org</a>.
-    In the app, Settings ▸ About ▸ <em>Copy diagnostics</em> puts the same
-    details on your clipboard.
+    Would rather write an email, or have a screenshot to send? This form takes
+    text only — email <a href="mailto:langbuddy.support@zhware.org">langbuddy.support@zhware.org</a>
+    and attach it there. In the app, Settings ▸ About ▸ <em>Copy diagnostics</em>
+    puts the same details on your clipboard.
   </p>
 
   <script>

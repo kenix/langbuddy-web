@@ -26,12 +26,12 @@ python3 -m http.server 8000     # preview at http://localhost:8000
   page that loads a font from someone else's CDN. The single exception is
   eight lines of our own inline script on the report page, declared in the
   privacy policy.
-- **The form posts to FormSubmit.** GitHub Pages serves files and runs
+- **The form posts to Web3Forms.** GitHub Pages serves files and runs
   nothing, so a form needs somewhere off-site to post to. It is a plain
   `<form method="POST">` with no JavaScript in the path, so it still works
-  with scripting off; `_next` is the thank-you page and `_honey` is the
-  honeypot that keeps the CAPTCHA out of the way. The alias in the action
-  is the one the app used to post to itself. **It is a third-party data
+  with scripting off; `redirect` is the thank-you page and `botcheck` is the
+  Honeypot Trick that keeps the CAPTCHA out of the way. `access_key` is the
+  public Web3Forms key for the support mailbox. **It is a third-party data
   flow and the privacy policy says so** — do not add another one without
   adding it there too.
 - **The app's own details arrive in the link, not from the browser.** The
@@ -50,8 +50,8 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 | `index.html` | Landing page: what the app is, what it does, store links |
 | `privacy/index.html` | Privacy policy — the URL both stores require |
 | `support/index.html` | Support page — the URL Apple requires, plus the FAQ |
-| `report/index.html` | The bug/idea form, posted to FormSubmit |
-| `report/thanks/index.html` | Where FormSubmit sends people afterwards |
+| `report/index.html` | The bug/idea form, posted to Web3Forms |
+| `report/thanks/index.html` | Where Web3Forms sends people afterwards |
 | `terms/index.html` | Terms of use / EULA supplement |
 | `assets/style.css` | The whole stylesheet |
 | `assets/screenshots/` | Store screenshots, as they are taken |
