@@ -74,20 +74,12 @@ header.site .wrap {
   text-decoration: none;
 }
 
+/* The same file the tab icon is, so the mark cannot drift between the
+   two. It carries its own background, so it needs no dark-mode rule. */
 .brand .mark {
   width: 28px;
   height: 28px;
-  border-radius: 8px;
-  background: var(--accent);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-@media (prefers-color-scheme: dark) {
-  .brand .mark { color: #12121a; }
+  display: block;
 }
 
 nav.site {

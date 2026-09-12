@@ -6,6 +6,18 @@ Store and Google Play require before a build can be submitted.
 
 Plain static HTML. No build step, no dependencies, no JavaScript.
 
+## The mark
+
+`favicon.svg` is the site's icon and the header's logo — one file, so the
+two cannot drift. `favicon.ico` (16/32/48) and `apple-touch-icon.png` (180)
+are the same shape in pixels, for the browsers and home screens that will
+not take an SVG. All three are committed; regenerate the two raster files
+after changing the mark:
+
+```bash
+python3 tools/make_icons.py
+```
+
 ## Preview
 
 ```bash
@@ -75,3 +87,8 @@ rely on them:
       answer Play's Data safety form the same way.
 - [ ] Paste the Web3Forms `access_key` into `report/index.html` and send one
       test report end to end.
+- [ ] Replace the app's icon. It is still Flutter's default placeholder in
+      `apps/langbuddy/ios/…/AppIcon.appiconset/` and
+      `android/…/res/mipmap-*/`, and neither store accepts a build carrying
+      it. `favicon.svg` is the mark to build it from, unless a better one is
+      designed first — in which case both change together.

@@ -42,6 +42,14 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 - **Hosted on GitHub Pages** at the apex-style custom domain in `CNAME`.
   `.nojekyll` is there so the build never second-guesses the file layout.
 - **One stylesheet, light and dark**, driven by `prefers-color-scheme`.
+- **One mark, defined once.** `favicon.svg` is what the tab shows *and*
+  what the header shows, so the two cannot drift. A browser asking for
+  `/favicon.ico` will not take an SVG and neither will an iOS home screen,
+  so the same shape is drawn in pixels by `tools/make_icons.py` — pure
+  standard library, run by hand, output committed. The tile carries its own
+  background, which is why there is no dark-mode variant and no colour rule
+  on `.brand .mark`. Change the shape in **both** places, or the tab and
+  the header stop matching.
 
 ## Layout
 
@@ -53,6 +61,9 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 | `report/index.html` | The bug/idea form, posted to Web3Forms |
 | `report/thanks/index.html` | Where Web3Forms sends people afterwards |
 | `terms/index.html` | Terms of use / EULA supplement |
+| `favicon.svg` | The mark: the tab icon *and* the header's, one definition |
+| `favicon.ico`, `apple-touch-icon.png` | The same shape in pixels, drawn by `tools/make_icons.py` |
+| `tools/make_icons.py` | Regenerates those two. Run by hand, output committed |
 | `assets/style.css` | The whole stylesheet |
 | `assets/screenshots/` | Store screenshots, as they are taken |
 | `CNAME` | `langbuddy.zhware.org` |
@@ -90,6 +101,14 @@ The claims that would break first:
 - "the daily reminder is a local notification … there is no push service"
 - "this site sets no cookies, runs no analytics and embeds no third-party
   scripts or fonts"
+
+## Not done yet
+
+- **The app icon is still Flutter's default placeholder**
+  (`apps/langbuddy/ios/Runner/Assets.xcassets/AppIcon.appiconset/`). Neither
+  store accepts a build carrying it. `favicon.svg` is the mark to build it
+  from, unless a better one is designed first — in which case both change
+  together.
 
 ## Related
 
