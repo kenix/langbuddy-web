@@ -76,6 +76,11 @@ The privacy policy is a factual claim about the app, not boilerplate. If the
 app ever gains an account, an analytics SDK, a crash reporter, a push
 notification, or a server of its own, **this page is wrong until it is
 changed**, and the store listing's data-safety answers are wrong with it.
+The privacy page's *What might change* section is the one place that looks
+forward, and it is a promise as much as a plan: a hosted engine and hosted
+storage would be **optional**, and this page is updated **before** either
+ships. Do not soften either half.
+
 The claims that would break first:
 
 - "no account and no server"
