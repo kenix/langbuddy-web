@@ -1,4 +1,6 @@
-/* One stylesheet for four pages. Light and dark, no build step, no
+/* One stylesheet for four pages. The accent is the app's own seed colour
+   (AppTheme.seed, #3F6E9A) so the listing page and the screenshots beside
+   it read as one thing. Light and dark, no build step, no
    webfonts: the site has to load on a slow connection from a store
    listing, and a privacy page that phones home for a font is a poor
    advertisement for an app that does not phone home at all. */
@@ -10,8 +12,8 @@
   --border: #e2e2e8;
   --text: #17171c;
   --muted: #5c5c68;
-  --accent: #2f5bd7;
-  --accent-soft: #eaf0ff;
+  --accent: #3f6e9a;
+  --accent-soft: #e8eff6;
   --radius: 14px;
   --measure: 42rem;
 }
@@ -23,8 +25,8 @@
     --border: #2c2c35;
     --text: #ececf1;
     --muted: #a2a2b0;
-    --accent: #8fa9ff;
-    --accent-soft: #1d2440;
+    --accent: #9dbbd9;
+    --accent-soft: #1c2a38;
   }
 }
 
