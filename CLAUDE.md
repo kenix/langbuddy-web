@@ -23,8 +23,22 @@ python3 -m http.server 8000     # preview at http://localhost:8000
   to maintain than the thing it maintains.
 - **No cookies, no analytics, no third-party scripts, no webfonts.** An app
   whose whole pitch is that it does not phone home cannot have a privacy
-  page that loads a font from someone else's CDN. This is also what lets
-  the privacy policy say "this site sets no cookies" without qualification.
+  page that loads a font from someone else's CDN. The single exception is
+  eight lines of our own inline script on the report page, declared in the
+  privacy policy.
+- **The form posts to FormSubmit.** GitHub Pages serves files and runs
+  nothing, so a form needs somewhere off-site to post to. It is a plain
+  `<form method="POST">` with no JavaScript in the path, so it still works
+  with scripting off; `_next` is the thank-you page and `_honey` is the
+  honeypot that keeps the CAPTCHA out of the way. The alias in the action
+  is the one the app used to post to itself. **It is a third-party data
+  flow and the privacy policy says so** — do not add another one without
+  adding it there too.
+- **The app's own details arrive in the link, not from the browser.** The
+  app opens `/report/?d=<diagnostics>`; the page copies that into a
+  read-only field so the user sees exactly what will be sent. The browser
+  cannot be asked for the app version, and asking a person to copy it by
+  hand is asking for the report without it.
 - **Hosted on GitHub Pages** at the apex-style custom domain in `CNAME`.
   `.nojekyll` is there so the build never second-guesses the file layout.
 - **One stylesheet, light and dark**, driven by `prefers-color-scheme`.
@@ -36,6 +50,8 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 | `index.html` | Landing page: what the app is, what it does, store links |
 | `privacy/index.html` | Privacy policy — the URL both stores require |
 | `support/index.html` | Support page — the URL Apple requires, plus the FAQ |
+| `report/index.html` | The bug/idea form, posted to FormSubmit |
+| `report/thanks/index.html` | Where FormSubmit sends people afterwards |
 | `terms/index.html` | Terms of use / EULA supplement |
 | `assets/style.css` | The whole stylesheet |
 | `assets/screenshots/` | Store screenshots, as they are taken |

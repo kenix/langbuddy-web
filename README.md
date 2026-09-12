@@ -30,6 +30,23 @@ python3 -m http.server 8000
 5. Back in **Settings ▸ Pages**, tick **Enforce HTTPS** once the certificate
    has been issued (it can take a few minutes after DNS propagates).
 
+## The report form
+
+`/report/` posts to [FormSubmit](https://formsubmit.co/), which emails it on
+to `langbuddy.support@zhware.org`. GitHub Pages cannot run anything itself,
+so the form needs an off-site endpoint; this is the same relay the app used
+to post to directly.
+
+The alias in the form's `action` must be activated once: submit the form,
+then click the link FormSubmit emails you. Two things worth checking against
+their current documentation before you rely on them:
+
+- **Attachments.** The form has a file input and `enctype="multipart/form-data"`.
+  Confirm that file uploads are included on the plan you are on, and what the
+  size limit is.
+- **The `_next` redirect.** It points at `/report/thanks/`, which only works
+  once the custom domain is live.
+
 ## URLs the store listings need
 
 | Field | Value |
@@ -48,3 +65,5 @@ python3 -m http.server 8000
       exist.
 - [ ] Re-read `privacy/index.html` against what the app actually does, and
       answer Play's Data safety form the same way.
+- [ ] Activate the FormSubmit alias and send one test report end to end,
+      including an attachment.

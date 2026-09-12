@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report a bug or an idea — LangBuddy</title>
+<meta name="description" content="Tell us what went wrong, or what you would like LangBuddy to do.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://langbuddy.zhware.org/report/">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="mark">L</span>LangBuddy</a>
+    <nav class="site">
+      <a href="/">Home</a>
+      <a href="/support/">Support</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h1>Report a bug or an idea</h1>
+  <p class="lead">
+    One person reads every message. Concrete cases help most: the word you
+    captured, what you expected, and what you got instead.
+  </p>
+
+  <!-- Posts straight to FormSubmit, which emails it on. GitHub Pages serves
+       static files and nothing else, so the form needs somewhere off-site to
+       post to; this is the same relay the app used to post to itself. -->
+  <form action="https://formsubmit.co/c88b0d2e939dea0d679c8138d7a2c7b9"
+        method="POST"
+        enctype="multipart/form-data">
+
+    <input type="hidden" name="_subject" value="LangBuddy report">
+    <input type="hidden" name="_next"
+           value="https://langbuddy.zhware.org/report/thanks/">
+    <input type="hidden" name="_template" value="table">
+    <!-- FormSubmit's own honeypot: a bot fills it in, a person never sees
+         it, and the message is dropped without a CAPTCHA in the way. -->
+    <input type="text" name="_honey" style="display:none">
+    <input type="hidden" name="_captcha" value="false">
+
+    <p>
+      <label for="kind"><strong>What is this?</strong></label><br>
+      <select id="kind" name="Kind" required>
+        <option value="Bug">Something is broken</option>
+        <option value="Idea">An idea for the app</option>
+        <option value="Question">A question</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="message"><strong>What happened?</strong></label><br>
+      <textarea id="message" name="Message" rows="8" required
+                placeholder="What you did, what happened, what you expected."></textarea>
+    </p>
+
+    <p>
+      <label for="email"><strong>Your email</strong> (optional)</label><br>
+      <input id="email" type="email" name="_replyto"
+             placeholder="so we can reply">
+    </p>
+
+    <p>
+      <label for="attachment"><strong>Screenshot</strong> (optional)</label><br>
+      <input id="attachment" type="file" name="attachment"
+             accept="image/*,.pdf">
+    </p>
+
+    <div class="panel" id="diagnostics-panel" hidden>
+      <p><strong>Details about your app</strong></p>
+      <p>
+        Sent with the report so a problem can be reproduced. Shown here in
+        full, because what you can see is exactly what goes: no API key, and
+        none of your vocabulary.
+      </p>
+      <textarea id="diagnostics" name="App details" rows="6" readonly></textarea>
+    </div>
+
+    <p class="actions">
+      <button class="button" type="submit">Send</button>
+    </p>
+  </form>
+
+  <p>
+    Would rather write an email? <a href="mailto:langbuddy.support@zhware.org">langbuddy.support@zhware.org</a>.
+    In the app, Settings ▸ About ▸ <em>Copy diagnostics</em> puts the same
+    details on your clipboard.
+  </p>
+
+  <script>
+    // The app opens this page with its own details in the query string —
+    // the website cannot know them, and asking somebody to copy them by
+    // hand is asking for the report without them. First-party and inline:
+    // nothing here is fetched from anyone else.
+    (function () {
+      var details = new URLSearchParams(location.search).get('d');
+      if (!details) return;
+      document.getElementById('diagnostics').value = details;
+      document.getElementById('diagnostics-panel').hidden = false;
+    })();
+  </script>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 zhware</span>
+    <span class="spacer"></span>
+    <a href="/support/">Support</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+  </div>
+</footer>
+
+</body>
+</html>
