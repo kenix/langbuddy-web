@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — LangBuddy</title>
+<meta name="description" content="Help with LangBuddy: contact, API keys, translation problems, backups and exports.">
+<link rel="canonical" href="https://langbuddy.zhware.org/support/">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="mark">L</span>LangBuddy</a>
+    <nav class="site">
+      <a href="/">Home</a>
+      <a href="/support/" aria-current="page">Support</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h1>Support</h1>
+  <p class="lead">
+    Something not working, or something missing? Write to us — one person reads
+    every message.
+  </p>
+
+  <div class="panel">
+    <p>
+      <strong>Email:</strong>
+      <a href="mailto:langbuddy.support@zhware.org">langbuddy.support@zhware.org</a>
+    </p>
+    <p>
+      Please include your phone and OS version, the app version (Settings ▸
+      About), and what you did just before the problem. If it is about a
+      translation, Settings ▸ About ▸ <em>Copy diagnostics</em> puts the useful
+      details on your clipboard — it never includes your API key or your
+      vocabulary.
+    </p>
+    <p>
+      Expect a reply within a few days. This is a one-person project, so
+      weekends may take longer.
+    </p>
+  </div>
+
+  <h2>Common questions</h2>
+
+  <details>
+    <summary>Do I need an API key to use LangBuddy?</summary>
+    <p>
+      No. LangBuddy translates on the device first, using the translation engine
+      built into your phone. That is free, works offline, and needs no account.
+      An API key buys the things a machine translator cannot give you — the
+      pronunciation, the short explanation, the example sentence, and made-up
+      quizzes.
+    </p>
+  </details>
+
+  <details>
+    <summary>How do I get an API key?</summary>
+    <p>
+      Open Settings ▸ AI service, choose a provider, and use the link there to
+      open that provider’s console. Create a key in your own account, then paste
+      it into the field — it saves itself. <em>Test</em> checks that it works.
+    </p>
+    <p>
+      Keys are pay-as-you-go and you are billed by the provider, not by us.
+      Settings shows roughly what a hundred words costs on the model you picked.
+      DeepSeek is the cheapest of the ones offered and is the default.
+    </p>
+  </details>
+
+  <details>
+    <summary>Where is my key stored? Can you see it?</summary>
+    <p>
+      It is stored in the iOS Keychain or the Android encrypted preference
+      store, on your device. It is sent only to the provider it belongs to, over
+      HTTPS, directly from your phone. We never see it, and it is never included
+      in diagnostics or backups.
+    </p>
+  </details>
+
+  <details>
+    <summary>A translation failed, or came back cut off.</summary>
+    <p>
+      A capture that is too long for the model you chose comes back cut off.
+      The app refuses an over-long capture while you are typing it and says what
+      the limit is — shorten it, capture it in pieces, or choose a model that
+      writes more. If a request simply failed, the entry keeps a retry button.
+    </p>
+  </details>
+
+  <details>
+    <summary>A made-up quiz is slow or keeps failing.</summary>
+    <p>
+      Writing a quiz means writing every question in every language in one
+      reply, so a minute or two is normal. If it fails, ask for fewer questions.
+      Remember that a made-up quiz is answered in one language by design.
+    </p>
+  </details>
+
+  <details>
+    <summary>How do I get my vocabulary out?</summary>
+    <p>
+      Settings ▸ Data exports the whole vocabulary as a JSON file, or as an Anki
+      deck. The JSON can be imported back into LangBuddy on another device;
+      importing never overwrites or deletes anything, it only adds what is
+      missing.
+    </p>
+  </details>
+
+  <details>
+    <summary>Is my vocabulary backed up?</summary>
+    <p>
+      The app writes periodic backups into its own folder on the device and
+      keeps the last few. Those are local: if you lose the phone, they go with
+      it. For a real backup, export to JSON and keep the file somewhere of your
+      own.
+    </p>
+  </details>
+
+  <details>
+    <summary>How do I delete everything?</summary>
+    <p>
+      Delete individual words by swiping them away in the list, or uninstall the
+      app to remove everything at once — vocabulary, settings, local backups and
+      your stored API key. Nothing is held on any server, so there is nothing
+      left behind.
+    </p>
+  </details>
+
+  <details>
+    <summary>Why did a word get filed under the wrong language?</summary>
+    <p>
+      Detection is a guess, and a word can belong to more than one language
+      (<em>Gift</em> is German for poison). Open the word and use <em>Language:
+      … — change</em>; the app records it as your decision and translates again,
+      and nothing overrules it afterwards.
+    </p>
+  </details>
+
+  <details>
+    <summary>Can I report a bug or ask for a feature?</summary>
+    <p>
+      Yes, please — the email above. Concrete cases help most: the word you
+      captured, what you expected, and what you got.
+    </p>
+  </details>
+
+  <h2>Privacy and terms</h2>
+  <p>
+    <a href="/privacy/">Privacy policy</a> ·
+    <a href="/terms/">Terms of use</a>
+  </p>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 zhware</span>
+    <span class="spacer"></span>
+    <a href="/support/">Support</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+/* One stylesheet for four pages. Light and dark, no build step, no
+   webfonts: the site has to load on a slow connection from a store
+   listing, and a privacy page that phones home for a font is a poor
+   advertisement for an app that does not phone home at all. */
+
+:root {
+  color-scheme: light dark;
+  --bg: #fbfbfd;
+  --surface: #ffffff;
+  --border: #e2e2e8;
+  --text: #17171c;
+  --muted: #5c5c68;
+  --accent: #2f5bd7;
+  --accent-soft: #eaf0ff;
+  --radius: 14px;
+  --measure: 42rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121216;
+    --surface: #1a1a20;
+    --border: #2c2c35;
+    --text: #ececf1;
+    --muted: #a2a2b0;
+    --accent: #8fa9ff;
+    --accent-soft: #1d2440;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ------------------------------------------------------------ header */
+
+header.site {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+header.site .wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 650;
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand .mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+@media (prefers-color-scheme: dark) {
+  .brand .mark { color: #12121a; }
+}
+
+nav.site {
+  margin-left: auto;
+  display: flex;
+  gap: 18px;
+  font-size: 15px;
+}
+
+nav.site a { color: var(--muted); text-decoration: none; }
+nav.site a:hover,
+nav.site a[aria-current="page"] { color: var(--text); }
+
+/* -------------------------------------------------------------- page */
+
+main { padding: 40px 0 64px; }
+
+h1 {
+  font-size: 2.1rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 40px 0 10px;
+  letter-spacing: -0.01em;
+}
+
+h3 { font-size: 1.02rem; margin: 26px 0 6px; }
+
+p, li { color: var(--text); }
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+
+.updated {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+
+a { color: var(--accent); }
+
+ul { padding-left: 1.25em; }
+li { margin: 6px 0; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.92em;
+  background: var(--accent-soft);
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+
+/* ------------------------------------------------------------- cards */
+
+.cards {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin: 28px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin: 0;
+}
+
+.cards strong { display: block; margin-bottom: 4px; }
+.cards span { color: var(--muted); font-size: 0.95rem; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin: 24px 0;
+}
+
+.panel p:first-child { margin-top: 0; }
+.panel p:last-child { margin-bottom: 0; }
+
+/* ------------------------------------------------------------ button */
+
+.button {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 11px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .button { color: #12121a; }
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0; }
+
+/* --------------------------------------------------------- questions */
+
+details {
+  border-top: 1px solid var(--border);
+  padding: 14px 0;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+
+details summary::-webkit-details-marker { display: none; }
+
+details summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1.2em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+details[open] summary::before { content: "\2013"; }
+
+details p:last-child { margin-bottom: 0; }
+
+/* ------------------------------------------------------------ footer */
+
+footer.site {
+  border-top: 1px solid var(--border);
+  padding: 26px 0 48px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+footer.site .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+footer.site a { color: var(--muted); }
+footer.site .spacer { margin-left: auto; }
+
+/* Screenshots are added as they are taken; the frame keeps the page from
+   jumping when they land. */
+.shots {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin: 28px 0;
+}
+
+.shots img {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: block;
+}
