@@ -10,7 +10,7 @@ Plain static HTML. No build step, no dependencies, no JavaScript.
 
 A pea pod holding three seeds, on a deep-teal tile. `icon.svg` is the app
 icon, with a glyph on each seed (A, あ, 字, as outlines — no font needed),
-and it is the header's logo too, at 44 px, where those glyphs are readable.
+and it is the header's logo too, at 64 px, where those glyphs are readable.
 `favicon.svg` is the same drawing with plain seeds, for the tab and anything
 else under 32 px, where the glyphs only blur.
 `favicon.ico` (16/32/48) and `apple-touch-icon.png` (180) are rasters of

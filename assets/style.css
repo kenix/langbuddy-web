@@ -96,20 +96,23 @@ header.site .wrap {
   font-family: "Bricolage Grotesque Wordmark", -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 600;
-  font-size: 19px;
+  font-size: 25px;
   letter-spacing: -0.01em;
   color: var(--text);
   text-decoration: none;
 }
 
 /* `icon.svg`, not the tab's `favicon.svg`: the header is the one place on
-   the site with room for the glyphs on the seeds, and at 44px they resolve
-   into A, あ and 字 instead of three smudges. Keep it at or above 44 or use
-   the plain-seed file — half a glyph is worse than none. The tile carries
-   its own background, so it needs no dark-mode rule. */
+   the site with room for the glyphs on the seeds, and at this size they
+   read as A, あ and 字 rather than three smudges. Below about 40px they go
+   back to being texture, and there the plain-seed file is the honest
+   choice — half a glyph is worse than none. The mark and the name are
+   sized together: a 64px mark over the old 19px name read as a logo with a
+   caption under it. The tile carries its own background, so it needs no
+   dark-mode rule. */
 .brand .mark {
-  width: 44px;
-  height: 44px;
+  width: 64px;
+  height: 64px;
   display: block;
 }
 

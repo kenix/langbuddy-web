@@ -46,8 +46,9 @@ python3 -m http.server 8000     # preview at http://localhost:8000
   seeds on a deep-teal tile. `icon.svg` is the app icon: each seed carries
   a glyph (A, あ, 字 — the scripts the app renders), converted to outlines
   so the file needs no font. It is also what the page header shows, at
-  44 px, which is the size the glyphs stop being smudges and start being
-  letters. `favicon.svg` is the same drawing with plain seeds, for the tab
+  64 px, big enough that the glyphs read as letters; the name beside it is
+  sized to match, because a large mark over a small name reads as a logo
+  with a caption. `favicon.svg` is the same drawing with plain seeds, for the tab
   and anything else under 32 px, where a glyph only muddies its seed.
   Every raster icon — `favicon.ico`,
   `apple-touch-icon.png`, and with `--app` the app's iOS and Android sets —
