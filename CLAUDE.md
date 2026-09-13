@@ -55,6 +55,20 @@ python3 -m http.server 8000     # preview at http://localhost:8000
   lives in the SVGs only; change it there, rerun the script, commit all of
   it. The tile carries its own background, which is why there is no
   dark-mode variant and no colour rule on `.brand .mark`.
+- **Every icon reference carries `?v=N`.** A browser holds a favicon far
+  longer than the ten minutes GitHub Pages asks for, so without it a
+  returning visitor — an app-store reviewer, for one — keeps seeing the
+  previous mark. Bump the number in all six pages when the mark changes.
+- **One webfont, and it is ours.** 2.6 kB of Bricolage Grotesque cut down
+  to the nine letters of the name, in `assets/fonts/`, used by `.brand`
+  and nothing else. The old rule was "no webfonts", to keep the site quick
+  on a store listing and to keep the privacy page honest; a same-origin
+  subset smaller than the icon beside it answers both, which is why it was
+  allowed to bend. Anything from a font network still is not. The
+  `unicode-range` in the `@font-face` is the subset's own, so a letter
+  outside the name falls back silently: re-cut the file before renaming
+  the site. `assets/fonts/OFL.txt` is the licence the font ships under and
+  has to stay beside it.
 
 ## Layout
 
@@ -71,6 +85,7 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 | `favicon.ico`, `apple-touch-icon.png` | Rasters of the SVGs, written by `tools/make_icons.py` |
 | `tools/make_icons.py` | Rasterises the two SVGs; `--app PATH` also writes the app's icon sets. Run by hand, output committed |
 | `assets/style.css` | The whole stylesheet |
+| `assets/fonts/` | The wordmark subset and its `OFL.txt`. The only webfont |
 | `assets/screenshots/` | Store screenshots, as they are taken |
 | `CNAME` | `wordgarner.zhware.org` |
 
@@ -105,17 +120,11 @@ The claims that would break first:
 - "the only data that ever leaves your device is text you asked to have
   translated"
 - "the daily reminder is a local notification … there is no push service"
-- "this site sets no cookies, runs no analytics and embeds no third-party
-  scripts or fonts"
-
-## Not done yet
-
-- **The wordmark is set in the system sans**, not in the Bricolage
-  Grotesque the mark was designed with, because the rule above forbids a
-  webfont and the privacy page says so in as many words. A subset of the
-  eleven letters of the name, self-hosted, would be a few kilobytes and
-  first-party — worth doing if the header ever needs to look drawn rather
-  than typed, and not worth breaking the rule quietly for.
+- "this site sets no cookies, runs no analytics and loads nothing from
+  anybody else: no third-party scripts, and no font network" — the
+  wordmark font is served from this site, and that is the whole reason the
+  sentence can still be written this way. Pulling one file from a CDN
+  breaks it.
 
 ## Related
 

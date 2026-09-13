@@ -6,10 +6,15 @@
    a blue palette fights a teal one. `AppTheme.seed` in the app is the
    same deep teal; change the two together.
 
-   Light and dark, no build step, no webfonts: the site has to load on a
-   slow connection from a store listing, and a privacy page that phones
-   home for a font is a poor advertisement for an app that does not phone
-   home at all. */
+   Light and dark, no build step, and exactly one font file: 2.6 kB of
+   Bricolage Grotesque, cut down to the nine letters of the name and served
+   from this site. The rule it bends used to be "no webfonts at all", for
+   two reasons — the site has to load on a slow connection from a store
+   listing, and a privacy page that phones home for a font is a poor
+   advertisement for an app that does not phone home at all. A same-origin
+   subset answers both: nothing is requested from a font network, and the
+   file is smaller than the icon beside it. Everything else on the page is
+   still the system sans. */
 
 :root {
   color-scheme: light dark;
@@ -70,12 +75,29 @@ header.site .wrap {
   padding-bottom: 14px;
 }
 
+/* The face the mark was drawn with, subset to the letters of the name and
+   served from this site — see the note at the top. The unicode-range is the
+   subset's own: a letter outside it silently falls back to the system sans,
+   so if the site is ever renamed, re-cut the file before changing the name.
+   Nothing but `.brand` asks for this family. */
+@font-face {
+  font-family: "Bricolage Grotesque Wordmark";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/bricolage-grotesque-wordmark.woff2") format("woff2");
+  unicode-range: U+20, U+47, U+57, U+61, U+64-65, U+6e-6f, U+72;
+}
+
 .brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 650;
-  font-size: 18px;
+  font-family: "Bricolage Grotesque Wordmark", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.01em;
   color: var(--text);
   text-decoration: none;
 }

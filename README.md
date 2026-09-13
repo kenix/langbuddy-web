@@ -22,6 +22,18 @@ same files:
 python3 tools/make_icons.py --app ../../apps/wordgarner
 ```
 
+The icon links carry a `?v=N`, because browsers hold a favicon much longer
+than the site asks them to. Bump it in all six pages when the mark changes,
+or returning visitors keep the old one.
+
+The name beside the mark is set in Bricolage Grotesque — 2.6 kB in
+`assets/fonts/`, cut down to the nine letters of "Word Garner" and served
+from this site, never from a font network. It is the only webfont here and
+the only thing that uses it is the header. Renaming the site means cutting
+a new subset first: the `@font-face` declares the subset's own
+`unicode-range`, so a letter it does not contain falls back to the system
+sans without a word.
+
 ## Preview
 
 ```bash
