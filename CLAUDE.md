@@ -1,6 +1,6 @@
-# langbuddy-web
+# wordgarner-web
 
-The public site for the LangBuddy app: <https://langbuddy.zhware.org>.
+The public site for the Word Garner app: <https://wordgarner.zhware.org>.
 
 It exists because both stores require it. Apple wants a support URL and a
 privacy policy URL before a build can be submitted; Google Play wants a
@@ -66,7 +66,7 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 | `tools/make_icons.py` | Regenerates those two. Run by hand, output committed |
 | `assets/style.css` | The whole stylesheet |
 | `assets/screenshots/` | Store screenshots, as they are taken |
-| `CNAME` | `langbuddy.zhware.org` |
+| `CNAME` | `wordgarner.zhware.org` |
 
 Pages live in directories with an `index.html` so the URLs have no `.html`
 suffix and a trailing slash works.
@@ -75,11 +75,11 @@ suffix and a trailing slash works.
 
 | Field | Value |
 |---|---|
-| Privacy policy URL (Apple, Google) | `https://langbuddy.zhware.org/privacy/` |
-| Support URL (Apple) | `https://langbuddy.zhware.org/support/` |
-| Marketing URL (Apple, optional) | `https://langbuddy.zhware.org/` |
-| Contact email (Google) | `langbuddy.support@zhware.org` |
-| EULA (Apple, optional) | `https://langbuddy.zhware.org/terms/` |
+| Privacy policy URL (Apple, Google) | `https://wordgarner.zhware.org/privacy/` |
+| Support URL (Apple) | `https://wordgarner.zhware.org/support/` |
+| Marketing URL (Apple, optional) | `https://wordgarner.zhware.org/` |
+| Contact email (Google) | `wordgarner.support@zhware.org` |
+| EULA (Apple, optional) | `https://wordgarner.zhware.org/terms/` |
 
 ## Keeping it true
 
@@ -105,14 +105,14 @@ The claims that would break first:
 ## Not done yet
 
 - **The app icon is still Flutter's default placeholder**
-  (`apps/langbuddy/ios/Runner/Assets.xcassets/AppIcon.appiconset/`). Neither
+  (`apps/wordgarner/ios/Runner/Assets.xcassets/AppIcon.appiconset/`). Neither
   store accepts a build carrying it. `favicon.svg` is the mark to build it
   from, unless a better one is designed first — in which case both change
   together.
 
 ## Related
 
-- The app: `apps/langbuddy`. Its Settings ▸ About links here, and its
+- The app: `apps/wordgarner`. Its Settings ▸ About links here, and its
   support tile opens `/support/`.
-- The support address is `langbuddy.support@zhware.org`. It appears on this
-  site and in `apps/langbuddy/tools/feedback_endpoint.gs`.
+- The support address is `wordgarner.support@zhware.org`. It appears on this
+  site and in `apps/wordgarner/tools/feedback_endpoint.gs`.

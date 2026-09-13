@@ -1,6 +1,6 @@
-# langbuddy-web
+# wordgarner-web
 
-The public site for [LangBuddy](https://langbuddy.zhware.org) — the landing
+The public site for [Word Garner](https://wordgarner.zhware.org) — the landing
 page, the privacy policy, the support page and the terms of use that the App
 Store and Google Play require before a build can be submitted.
 
@@ -30,14 +30,14 @@ python3 -m http.server 8000
 1. Push this repository to GitHub.
 2. **Settings ▸ Pages ▸ Build and deployment**: source *Deploy from a
    branch*, branch `main`, folder `/ (root)`.
-3. **Settings ▸ Pages ▸ Custom domain**: `langbuddy.zhware.org`. The `CNAME`
+3. **Settings ▸ Pages ▸ Custom domain**: `wordgarner.zhware.org`. The `CNAME`
    file in this repository already carries it, so the field should fill in by
    itself once DNS resolves.
 4. At your DNS provider, add a `CNAME` record:
 
    | Name | Type | Value |
    |---|---|---|
-   | `langbuddy` | `CNAME` | `<your-github-username>.github.io` |
+   | `wordgarner` | `CNAME` | `<your-github-username>.github.io` |
 
 5. Back in **Settings ▸ Pages**, tick **Enforce HTTPS** once the certificate
    has been issued (it can take a few minutes after DNS propagates).
@@ -45,11 +45,11 @@ python3 -m http.server 8000
 ## The report form
 
 `/report/` posts to [Web3Forms](https://web3forms.com/), which emails it on
-to `langbuddy.support@zhware.org`. GitHub Pages cannot run anything itself,
+to `wordgarner.support@zhware.org`. GitHub Pages cannot run anything itself,
 so the form needs an off-site endpoint.
 
 Register the access key once at <https://web3forms.com/> with
-`langbuddy.support@zhware.org` and the website `https://langbuddy.zhware.org/support/`,
+`wordgarner.support@zhware.org` and the website `https://wordgarner.zhware.org/support/`,
 then paste the key into the `access_key` hidden field in `report/index.html`.
 The key is public by design — it only says which mailbox to deliver to.
 
@@ -71,16 +71,16 @@ rely on them:
 
 | Field | Value |
 |---|---|
-| Privacy policy URL (Apple, Google) | `https://langbuddy.zhware.org/privacy/` |
-| Support URL (Apple) | `https://langbuddy.zhware.org/support/` |
-| Marketing URL (Apple, optional) | `https://langbuddy.zhware.org/` |
-| Contact email (Google) | `langbuddy.support@zhware.org` |
-| EULA (Apple, optional) | `https://langbuddy.zhware.org/terms/` |
+| Privacy policy URL (Apple, Google) | `https://wordgarner.zhware.org/privacy/` |
+| Support URL (Apple) | `https://wordgarner.zhware.org/support/` |
+| Marketing URL (Apple, optional) | `https://wordgarner.zhware.org/` |
+| Contact email (Google) | `wordgarner.support@zhware.org` |
+| EULA (Apple, optional) | `https://wordgarner.zhware.org/terms/` |
 
 ## Before submitting
 
 - [ ] Drop store screenshots into `assets/screenshots/` and reference them on
-      the landing page (`apps/langbuddy/tool/screenshots.sh` takes them).
+      the landing page (`apps/wordgarner/tool/screenshots.sh` takes them).
 - [ ] Add the App Store and Play links to the landing page once the listings
       exist.
 - [ ] Re-read `privacy/index.html` against what the app actually does, and
@@ -88,7 +88,7 @@ rely on them:
 - [ ] Paste the Web3Forms `access_key` into `report/index.html` and send one
       test report end to end.
 - [ ] Replace the app's icon. It is still Flutter's default placeholder in
-      `apps/langbuddy/ios/…/AppIcon.appiconset/` and
+      `apps/wordgarner/ios/…/AppIcon.appiconset/` and
       `android/…/res/mipmap-*/`, and neither store accepts a build carrying
       it. `favicon.svg` is the mark to build it from, unless a better one is
       designed first — in which case both change together.
