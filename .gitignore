@@ -1,1 +1,9 @@
 .DS_Store
+
+# Repowise folders
+.claude/
+.repowise/
+.mcp.json
+.vscode/
+.repowise-workspace/
+.repowise-workspace.yaml
