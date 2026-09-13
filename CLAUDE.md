@@ -45,9 +45,11 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 - **One mark, defined once, in SVG.** The mark is a pea pod holding three
   seeds on a deep-teal tile. `icon.svg` is the app icon: each seed carries
   a glyph (A, あ, 字 — the scripts the app renders), converted to outlines
-  so the file needs no font. `favicon.svg` is the same drawing with plain
-  seeds, and is what the tab and the header show, because under 32 px a
-  glyph only muddies its seed. Every raster icon — `favicon.ico`,
+  so the file needs no font. It is also what the page header shows, at
+  44 px, which is the size the glyphs stop being smudges and start being
+  letters. `favicon.svg` is the same drawing with plain seeds, for the tab
+  and anything else under 32 px, where a glyph only muddies its seed.
+  Every raster icon — `favicon.ico`,
   `apple-touch-icon.png`, and with `--app` the app's iOS and Android sets —
   is produced by `tools/make_icons.py`, which *reads* those two SVGs and
   rasterises them (pure standard library, run by hand, output committed):
@@ -80,8 +82,8 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 | `report/index.html` | The bug/idea form, posted to Web3Forms |
 | `report/thanks/index.html` | Where Web3Forms sends people afterwards |
 | `terms/index.html` | Terms of use / EULA supplement |
-| `icon.svg` | The mark with glyphs on the seeds: the app icon, and every raster of 32 px or more |
-| `favicon.svg` | The mark with plain seeds: the tab icon *and* the header's |
+| `icon.svg` | The mark with glyphs on the seeds: the app icon, the page header, and every raster of 32 px or more |
+| `favicon.svg` | The mark with plain seeds: the tab icon, and anything under 32 px |
 | `favicon.ico`, `apple-touch-icon.png` | Rasters of the SVGs, written by `tools/make_icons.py` |
 | `tools/make_icons.py` | Rasterises the two SVGs; `--app PATH` also writes the app's icon sets. Run by hand, output committed |
 | `assets/style.css` | The whole stylesheet |

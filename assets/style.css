@@ -102,11 +102,14 @@ header.site .wrap {
   text-decoration: none;
 }
 
-/* The same file the tab icon is, so the mark cannot drift between the
-   two. It carries its own background, so it needs no dark-mode rule. */
+/* `icon.svg`, not the tab's `favicon.svg`: the header is the one place on
+   the site with room for the glyphs on the seeds, and at 44px they resolve
+   into A, あ and 字 instead of three smudges. Keep it at or above 44 or use
+   the plain-seed file — half a glyph is worse than none. The tile carries
+   its own background, so it needs no dark-mode rule. */
 .brand .mark {
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   display: block;
 }
 
