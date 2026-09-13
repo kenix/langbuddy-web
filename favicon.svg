@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The site's mark: a rounded tile in the brand blue with a geometric L.
-  The same shape is drawn in pixels by tools/make_icons.py for the .ico
-  and the iOS home-screen icon, and the same file is the header's mark,
-  so there is one definition of it rather than three.
+  The site's mark, plain: a pea pod holding three seeds on the deep teal
+  tile. This is the tab icon and the header's mark, both under 32 px, where
+  the glyphs of icon.svg would only muddy the seeds. Same drawing otherwise;
+  keep the two in step.
 
-  No dark-mode variant: the tile carries its own background, so it reads
-  on a light tab strip and a dark one alike.
+  tools/make_icons.py rasterises this file (and icon.svg) into favicon.ico,
+  the touch icon and the app's icon sets. It understands only rect, circle
+  and path with M L H V C Q Z, plus fill on the element or a parent g. Stay
+  inside that, or extend the script first.
+
+  No dark-mode variant: the tile carries its own ground, so it reads on a
+  light tab strip and a dark one alike.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img"
-     aria-label="Word Garner">
-  <rect width="100" height="100" rx="22" ry="22" fill="#3f6e9a"/>
-  <path d="M34 26 h12 v36 h24 v12 H34 Z" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Word Garner">
+  <rect width="100" height="100" rx="22" fill="#123d3a"/>
+  <g fill="#9fd356">
+    <path d="M10 82 C39.6 99.3 100.4 50.7 90 18 C60.4 0.7 -0.4 49.3 10 82 Z"/>
+    <path d="M91.66 19.11 L92.26 18.17 L92.79 17.28 L93.24 16.43 L93.65 15.61 L94.01 14.82 L94.35 14.05 L94.69 13.28 L95.03 12.51 L95.39 11.72 L95.79 10.89 L95.99 10.14 L95.9 9.37 L95.51 8.69 L94.89 8.21 L94.14 8.01 L93.37 8.1 L92.69 8.49 L92.21 9.11 L91.77 10.02 L91.37 10.88 L91.02 11.68 L90.69 12.45 L90.36 13.18 L90.03 13.89 L89.68 14.6 L89.29 15.33 L88.85 16.08 L88.34 16.89 L88.89 16.34 L89.61 16.04 L90.39 16.04 L91.11 16.34 L91.66 16.89 L91.96 17.61 L91.96 18.39 Z"/>
+  </g>
+  <g fill="#f5f2e6"><circle cx="29.2" cy="66.6" r="10"/><circle cx="50" cy="50" r="10"/><circle cx="70.8" cy="33.4" r="10"/></g>
 </svg>

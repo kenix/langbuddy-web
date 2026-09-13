@@ -8,14 +8,18 @@ Plain static HTML. No build step, no dependencies, no JavaScript.
 
 ## The mark
 
-`favicon.svg` is the site's icon and the header's logo — one file, so the
-two cannot drift. `favicon.ico` (16/32/48) and `apple-touch-icon.png` (180)
-are the same shape in pixels, for the browsers and home screens that will
-not take an SVG. All three are committed; regenerate the two raster files
-after changing the mark:
+A pea pod holding three seeds, on a deep-teal tile. `icon.svg` is the app
+icon, with a glyph on each seed (A, あ, 字, as outlines — no font needed);
+`favicon.svg` is the same drawing with plain seeds, and is the site's tab
+icon and the header's logo, because under 32 px the glyphs only blur.
+`favicon.ico` (16/32/48) and `apple-touch-icon.png` (180) are rasters of
+those two files, for the browsers and home screens that will not take an
+SVG. Everything is committed; after changing the mark, regenerate the
+rasters — and, with `--app`, the app's iOS and Android icon sets from the
+same files:
 
 ```bash
-python3 tools/make_icons.py
+python3 tools/make_icons.py --app ../../apps/wordgarner
 ```
 
 ## Preview
@@ -87,8 +91,6 @@ rely on them:
       answer Play's Data safety form the same way.
 - [ ] Paste the Web3Forms `access_key` into `report/index.html` and send one
       test report end to end.
-- [ ] Replace the app's icon. It is still Flutter's default placeholder in
-      `apps/wordgarner/ios/…/AppIcon.appiconset/` and
-      `android/…/res/mipmap-*/`, and neither store accepts a build carrying
-      it. `favicon.svg` is the mark to build it from, unless a better one is
-      designed first — in which case both change together.
+- [ ] Look at the landing page on a real phone in both themes. The palette
+      moved to the mark's colours (deep teal on light, pea green on dark)
+      and only the desktop browser has seen it.

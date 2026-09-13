@@ -42,14 +42,19 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 - **Hosted on GitHub Pages** at the apex-style custom domain in `CNAME`.
   `.nojekyll` is there so the build never second-guesses the file layout.
 - **One stylesheet, light and dark**, driven by `prefers-color-scheme`.
-- **One mark, defined once.** `favicon.svg` is what the tab shows *and*
-  what the header shows, so the two cannot drift. A browser asking for
-  `/favicon.ico` will not take an SVG and neither will an iOS home screen,
-  so the same shape is drawn in pixels by `tools/make_icons.py` — pure
-  standard library, run by hand, output committed. The tile carries its own
-  background, which is why there is no dark-mode variant and no colour rule
-  on `.brand .mark`. Change the shape in **both** places, or the tab and
-  the header stop matching.
+- **One mark, defined once, in SVG.** The mark is a pea pod holding three
+  seeds on a deep-teal tile. `icon.svg` is the app icon: each seed carries
+  a glyph (A, あ, 字 — the scripts the app renders), converted to outlines
+  so the file needs no font. `favicon.svg` is the same drawing with plain
+  seeds, and is what the tab and the header show, because under 32 px a
+  glyph only muddies its seed. Every raster icon — `favicon.ico`,
+  `apple-touch-icon.png`, and with `--app` the app's iOS and Android sets —
+  is produced by `tools/make_icons.py`, which *reads* those two SVGs and
+  rasterises them (pure standard library, run by hand, output committed):
+  32 px and above from `icon.svg`, below from `favicon.svg`. So the shape
+  lives in the SVGs only; change it there, rerun the script, commit all of
+  it. The tile carries its own background, which is why there is no
+  dark-mode variant and no colour rule on `.brand .mark`.
 
 ## Layout
 
@@ -61,9 +66,10 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 | `report/index.html` | The bug/idea form, posted to Web3Forms |
 | `report/thanks/index.html` | Where Web3Forms sends people afterwards |
 | `terms/index.html` | Terms of use / EULA supplement |
-| `favicon.svg` | The mark: the tab icon *and* the header's, one definition |
-| `favicon.ico`, `apple-touch-icon.png` | The same shape in pixels, drawn by `tools/make_icons.py` |
-| `tools/make_icons.py` | Regenerates those two. Run by hand, output committed |
+| `icon.svg` | The mark with glyphs on the seeds: the app icon, and every raster of 32 px or more |
+| `favicon.svg` | The mark with plain seeds: the tab icon *and* the header's |
+| `favicon.ico`, `apple-touch-icon.png` | Rasters of the SVGs, written by `tools/make_icons.py` |
+| `tools/make_icons.py` | Rasterises the two SVGs; `--app PATH` also writes the app's icon sets. Run by hand, output committed |
 | `assets/style.css` | The whole stylesheet |
 | `assets/screenshots/` | Store screenshots, as they are taken |
 | `CNAME` | `wordgarner.zhware.org` |
@@ -104,11 +110,12 @@ The claims that would break first:
 
 ## Not done yet
 
-- **The app icon is still Flutter's default placeholder**
-  (`apps/wordgarner/ios/Runner/Assets.xcassets/AppIcon.appiconset/`). Neither
-  store accepts a build carrying it. `favicon.svg` is the mark to build it
-  from, unless a better one is designed first — in which case both change
-  together.
+- **The wordmark is set in the system sans**, not in the Bricolage
+  Grotesque the mark was designed with, because the rule above forbids a
+  webfont and the privacy page says so in as many words. A subset of the
+  eleven letters of the name, self-hosted, would be a few kilobytes and
+  first-party — worth doing if the header ever needs to look drawn rather
+  than typed, and not worth breaking the rule quietly for.
 
 ## Related
 

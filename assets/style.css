@@ -1,32 +1,38 @@
-/* One stylesheet for four pages. The accent is the app's own seed colour
-   (AppTheme.seed, #3F6E9A) so the listing page and the screenshots beside
-   it read as one thing. Light and dark, no build step, no
-   webfonts: the site has to load on a slow connection from a store
-   listing, and a privacy page that phones home for a font is a poor
-   advertisement for an app that does not phone home at all. */
+/* One stylesheet for four pages. The colours are the mark's own, so the
+   listing page, the icon and the screenshots beside them read as one
+   thing: the pod's deep teal carries the accent on light, and its pea
+   green does on dark, where a colour that dark would disappear. The greys
+   are biased a little green for the same reason — a neutral borrowed from
+   a blue palette fights a teal one. `AppTheme.seed` in the app is the
+   same deep teal; change the two together.
+
+   Light and dark, no build step, no webfonts: the site has to load on a
+   slow connection from a store listing, and a privacy page that phones
+   home for a font is a poor advertisement for an app that does not phone
+   home at all. */
 
 :root {
   color-scheme: light dark;
-  --bg: #fbfbfd;
+  --bg: #fbfcfb;
   --surface: #ffffff;
-  --border: #e2e2e8;
-  --text: #17171c;
-  --muted: #5c5c68;
-  --accent: #3f6e9a;
-  --accent-soft: #e8eff6;
+  --border: #e1e6e2;
+  --text: #151917;
+  --muted: #58635e;
+  --accent: #123d3a;
+  --accent-soft: #e4efe9;
   --radius: 14px;
   --measure: 42rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121216;
-    --surface: #1a1a20;
-    --border: #2c2c35;
-    --text: #ececf1;
-    --muted: #a2a2b0;
-    --accent: #9dbbd9;
-    --accent-soft: #1c2a38;
+    --bg: #111413;
+    --surface: #191d1b;
+    --border: #2a302d;
+    --text: #eaefec;
+    --muted: #9fa9a4;
+    --accent: #9fd356;
+    --accent-soft: #18251f;
   }
 }
 
@@ -184,8 +190,10 @@ code {
   font-weight: 600;
 }
 
+/* On dark the accent is the pea green, so the label takes the pod's own
+   ink rather than a near-black borrowed from the page. */
 @media (prefers-color-scheme: dark) {
-  .button { color: #12121a; }
+  .button { color: #123d3a; }
 }
 
 .button.secondary {
