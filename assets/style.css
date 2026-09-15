@@ -206,16 +206,104 @@ code {
 .panel p:first-child { margin-top: 0; }
 .panel p:last-child { margin-bottom: 0; }
 
+/* -------------------------------------------------------------- form */
+
+/* The report form's controls were left to the browser, and a browser sizes
+   a select to its longest option and a textarea to a 20-column default.
+   On a 42rem column that read as three small boxes adrift in a wide page:
+   the one field somebody is meant to write a paragraph in was the width of
+   a name, and could only be dragged bigger. They are one column now — full
+   width, the page's own border, radius and type, and a message box that
+   opens at the size the paragraph wants. */
+
+form { margin: 28px 0; }
+
+form p { margin: 0 0 20px; }
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+input[type="email"],
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 11px 14px;
+}
+
+input::placeholder,
+textarea::placeholder { color: var(--muted); }
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+textarea {
+  /* An inline-level textarea leaves a descender's worth of gap under
+     itself, which reads as a broken margin inside the panel. */
+  display: block;
+  /* Taller, never wider: the column is the measure the whole site is set
+     to, and a textarea dragged past it takes the page with it. */
+  resize: vertical;
+  min-height: 9.5rem;
+  line-height: 1.55;
+}
+
+/* Native chevrons ignore most of the rules above — Safari in particular
+   drops the background and the padding unless the control is unstyled
+   first — so the arrow is drawn here instead. Two rules because a data URI
+   cannot read `currentColor`. */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%2358635e' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px 8px;
+  padding-right: 40px;
+}
+
+@media (prefers-color-scheme: dark) {
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%239fa9a4' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+  }
+}
+
+/* Sent, not written: quieter than the fields above it, set in the face the
+   details were printed in, and short because nobody edits it. */
+#diagnostics {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92rem;
+  color: var(--muted);
+  min-height: 7rem;
+}
+
 /* ------------------------------------------------------------ button */
 
+/* Shared by the links on the landing page and the form's submit, so it has
+   to undo what a browser gives a `<button>` and nothing else does: its own
+   border, its own font, and a cursor that does not say "text". */
 .button {
   display: inline-block;
   background: var(--accent);
   color: #fff;
   padding: 11px 20px;
+  border: 0;
   border-radius: 999px;
   text-decoration: none;
+  font: inherit;
   font-weight: 600;
+  cursor: pointer;
 }
 
 /* On dark the accent is the pea green, so the label takes the pod's own

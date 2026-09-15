@@ -42,6 +42,18 @@ python3 -m http.server 8000     # preview at http://localhost:8000
 - **Hosted on GitHub Pages** at the apex-style custom domain in `CNAME`.
   `.nojekyll` is there so the build never second-guesses the file layout.
 - **One stylesheet, light and dark**, driven by `prefers-color-scheme`.
+- **The form's controls are styled, not left to the browser.** A browser
+  sizes a `select` to its longest option and a `textarea` to a 20-column
+  default, so on a 42rem column the report form read as three small boxes
+  adrift in a wide page — the field somebody is meant to write a paragraph
+  in was the width of a name, and could only be dragged bigger. They are
+  one full-width column with the page's own border, radius and type, and
+  the message box opens at the size the paragraph wants. `resize: vertical`
+  on purpose: taller is useful, wider drags the page past the measure the
+  whole site is set to. The `select`'s chevron is drawn in CSS because
+  Safari drops the background and the padding on a control it still owns,
+  and it takes two rules because a data URI cannot read `currentColor`.
+  A `<label>` is `display: block`, so no `<br>` follows one.
 - **One mark, defined once, in SVG.** The mark is a pea pod holding three
   seeds on a deep-teal tile. `icon.svg` is the app icon: each seed carries
   a glyph (A, あ, 字 — the scripts the app renders), converted to outlines
